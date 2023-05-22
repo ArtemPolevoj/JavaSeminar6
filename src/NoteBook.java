@@ -2,75 +2,47 @@ import java.util.Objects;
 
 public class NoteBook {
     private static int count = 1;
-    private final  int ID = count++;
+    private final int ID = count++;
 
-    private String manufacturer;
-    private String size;
-    private String os;
-    private String ram;
-    private String hdd;
-    private String color;
+    private final String MANUFACTURER;
+    private final String SIZE;
+    private final String OS;
+    private final String RAM;
+    private final String HDD;
+    private final String COLOR;
 
-    public NoteBook() {
-
-    }
-
-    public NoteBook(String manufacturer, String size, String os,
-                    String ram, String hdd, String color) {
-        this.manufacturer = manufacturer;
-        this.size = size;
-        this.os = os;
-        this.ram = ram;
-        this.hdd = hdd;
-        this.color = color;
-    }
-
-    public int getID() {
-        return ID;
+    public NoteBook(String manufacturer, String size, String OS,
+                    String RAM, String HDD, String COLOR) {
+        this.MANUFACTURER = manufacturer;
+        this.SIZE = size;
+        this.OS = OS;
+        this.RAM = RAM;
+        this.HDD = HDD;
+        this.COLOR = COLOR;
     }
 
     public String getManufacturer() {
-        return manufacturer;
+        return MANUFACTURER;
     }
 
     public String getSize() {
-        return size;
+        return SIZE;
     }
 
     public String getOs() {
-        return os;
+        return OS;
     }
 
     public String getRam() {
-        return ram;
+        return RAM;
     }
 
     public String getHdd() {
-        return hdd;
+        return HDD;
     }
 
     public String getColor() {
-        return color;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
-    public void setOs(String os) {
-        this.os = os;
-    }
-
-    public void setRam(String ram) {
-        this.ram = ram;
-    }
-
-    public void setHdd(String hdd) {
-        this.hdd = hdd;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
+        return COLOR;
     }
 
     @Override
@@ -78,29 +50,29 @@ public class NoteBook {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NoteBook noteBook = (NoteBook) o;
-        return Objects.equals(ram, noteBook.ram)
-                && Objects.equals(hdd, noteBook.hdd)
-                && Objects.equals(manufacturer, noteBook.manufacturer)
-                && Objects.equals(size, noteBook.size)
-                && Objects.equals(os, noteBook.os)
-                && Objects.equals(color, noteBook.color);
+        return Objects.equals(RAM, noteBook.RAM)
+                && Objects.equals(HDD, noteBook.HDD)
+                && Objects.equals(MANUFACTURER, noteBook.MANUFACTURER)
+                && Objects.equals(SIZE, noteBook.SIZE)
+                && Objects.equals(OS, noteBook.OS)
+                && Objects.equals(COLOR, noteBook.COLOR);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(manufacturer, size, os, ram, hdd, color);
+        return Objects.hash(MANUFACTURER, SIZE, OS, RAM, HDD, COLOR);
     }
 
     @Override
     public String toString() {
         return "NoteBook{" +
                 "ID=" + ID +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", size='" + size + '\'' +
-                ", OS='" + os + '\'' +
-                ", RAM=" + ram +
-                ", HDD=" + hdd +
-                ", color='" + color + '\'' +
+                ", manufacturer='" + MANUFACTURER + '\'' +
+                ", size='" + SIZE + '\'' +
+                ", OS='" + OS + '\'' +
+                ", RAM=" + RAM +
+                ", HDD=" + HDD +
+                ", color='" + COLOR + '\'' +
                 '}';
     }
 }

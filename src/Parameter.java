@@ -1,13 +1,19 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Parameter {
 
-    private final DataNoteBook DATA_NOTEBOOK = new DataNoteBook();
+    private final DataNoteBook DATA_NOTEBOOK;
     private ArrayList<String> listParameter;
-    private String value;
-private int parameterNumber;
-    public void getParameter() {
+    private final HashMap<Integer, String> MAP_PARAMETER = new HashMap<>();
+
+    public Parameter(DataNoteBook dataNoteBook) {
+        this.DATA_NOTEBOOK = dataNoteBook;
+        getParameter();
+    }
+
+    private void getParameter() {
         String selectionParameter = "Выберете параметр: " +
                 "1 - RAM, " +
                 "2 - OS, " +
@@ -16,9 +22,10 @@ private int parameterNumber;
                 "5 - MANUFACTURE, " +
                 "6 - SIZE_NOTEBOOK.";
         String selectionValue = "";
+        String value = "";
         System.out.println("Добрый день");
 
-        parameterNumber = getNumber(selectionParameter, 6);
+        int parameterNumber = getNumber(selectionParameter, 6);
         switch (parameterNumber) {
             case 1 -> {
                 listParameter = DATA_NOTEBOOK.getRAM();
@@ -42,10 +49,10 @@ private int parameterNumber;
             }
             case 6 -> {
                 listParameter = DATA_NOTEBOOK.getSIZE_NOTEBOOK();
-                selectionValue = "SIZE_NOTEBOOK";
+                selectionValue = "минимальное значение SIZE_NOTEBOOK";
             }
         }
-        String selectionMinValue = "Выберете "+ selectionValue + ": " +
+        String selectionMinValue = "Выберете " + selectionValue + ": " +
                 "1 - " + listParameter.get(0) + ", " +
                 "2 - " + listParameter.get(1) + ", " +
                 "3 - " + listParameter.get(2) + ", " +
@@ -57,6 +64,7 @@ private int parameterNumber;
             case 3 -> value = listParameter.get(2);
             case 4 -> value = listParameter.get(3);
         }
+        MAP_PARAMETER.put(parameterNumber, value);
     }
 
     private int getNumber(String str, int max) {
@@ -77,10 +85,8 @@ private int parameterNumber;
         }
     }
 
-    public String getValue() {
-        return value;
+    public HashMap<Integer, String> getHashMapParameter() {
+        return MAP_PARAMETER;
     }
-    public int getParameterNumber(){
-        return parameterNumber;
-    }
+
 }
